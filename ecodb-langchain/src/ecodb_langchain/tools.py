@@ -83,8 +83,8 @@ def make_ecodb_tools(client: EcoDBClient) -> list[BaseTool]:
         return _dumps({"items": trimmed})
 
     @tool
-    def ecodb_save_memory(content: str, type: str = "observacion", tags: Optional[list[str]] = None) -> str:
-        """Persist a new memory in EcoDB so it survives across sessions. ``type`` is one of
+    def ecodb_save_memory(content: str, type: str, tags: Optional[list[str]] = None) -> str:
+        """Persist a new memory in EcoDB so it survives across sessions. ``type`` is REQUIRED, one of
         momento, decision, acuerdo, tecnico, descubrimiento, observacion, referencia, caso, skill.
         Use for durable facts, decisions or discoveries — not for ephemeral chit-chat.
         Returns the created memory id."""

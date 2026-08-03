@@ -324,7 +324,7 @@ mcp = FastMCP("ecodb", host=MCP_HOST, port=MCP_PORT)
 @mcp.tool()
 def save_memory(
     content: str,
-    type: str = "observacion",
+    type: str,
     workspace_id: int = 1,
     project_id: int = 1,
     tags: Optional[list[str]] = None,
@@ -338,7 +338,7 @@ def save_memory(
 
     Args:
       content: texto de la memoria (max 16000 chars, obligatorio).
-      type: uno de momento, decision, acuerdo, tecnico, descubrimiento, observacion, referencia.
+      type: OBLIGATORIO — uno de momento, decision, acuerdo, tecnico, descubrimiento, observacion, referencia.
       workspace_id: id del workspace (default 1 = system default).
       project_id: id del project (default 1 = general).
       tags: lista de etiquetas opcionales.
