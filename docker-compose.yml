@@ -226,6 +226,11 @@ services:
       NER_SERVICE_URL: http://ner:8091
       WINDOWS_MEDIA_PREFIX: ${WINDOWS_MEDIA_PREFIX:-}
       INTERNAL_BROADCAST_SECRET: ${INTERNAL_BROADCAST_SECRET}
+      # Docs grandes (listas densas tipo LittleMe) exceden los defaults (60/120s)
+      # con la GPU saturada — subidos 2026-07-04.
+      GLINER_TIMEOUT: "300"
+      EMBED_TIMEOUT: "300"
+      EMBED_BATCH_SIZE: "4"
     volumes:
       - ecodb_media:/app/media:ro
     healthcheck:
