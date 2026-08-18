@@ -758,7 +758,7 @@ async def get_cluster_members(
         rows = await conn.fetch(
             "SELECT * FROM memories WHERE id = ANY($1::uuid[]) ORDER BY created_at DESC",
             all_ids)
-        md = (cluster.get("metadata") or {}).get("member_distances", {})
+        md = _parse_jsonb(cluster.get("metadata")).get("member_distances", {})
         vis = await precompute_read_visibility(conn, actor)
         visible = []
         for mem in rows:
